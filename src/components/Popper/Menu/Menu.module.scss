@@ -1,0 +1,58 @@
+//Menu
+.menu-list {
+    width: 224px;
+
+    .menu-item {
+        display: block;
+        margin-left: 0px;
+    }
+}
+
+.menu-proper {
+    padding-bottom: 8px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: flex-start;
+    border-radius: 0;
+    padding: 11px 16px;
+    line-height: 1.8rem;
+    &:hover {
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+//Header
+
+.header {
+    position: relative;
+    height: 50px;
+    margin-top: -8px;
+    flex-shrink: 0;
+}
+
+.back-btn {
+    height: 50px;
+    width: 50px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.header-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.menu-body {
+    overflow-y: overlay;
+}
+
+.separate {
+    border-top: 1px solid rgba(22, 24, 35, 0.05);
+}
