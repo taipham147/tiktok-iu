@@ -1,0 +1,29 @@
+name: SSH Deploy
+
+on:
+  push:
+    branches:
+      - develop
+
+env:
+  SSH_ADDRESS: ${{ secrets.SSH_ADDRESS }}
+  SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Build, deploy to server
+      id: build-deploy
+      run: |
+        mkdir -p ~/.ssh
+        ssh-keyscan -H $SSH_ADDRESS  >> ~/.ssh/known_hosts
+        echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        chmod 600 ~/.ssh/id_rsa
+        ssh ubuntu@$SSH_ADDRESS "cd /var/www/html; git pull origin main"
